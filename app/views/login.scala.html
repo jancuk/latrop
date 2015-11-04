@@ -2,20 +2,25 @@
 
 @import helper._
 
-<title>pf-login application</title>
-
-  <h1>Login page</h1>
-
-  @form(routes.UserManagement.login) {
-
-    @inputText(
-      loginForm("email"),
-      '_label -> "E-mail",
-      '_help  -> "",
-      '_error -> loginForm.globalError
-    )
-
-    <input type="submit" value="Login">
-  }
-
-  <a href="@routes.UserManagement.registerView">Register</a>
+@main("Bte") {
+  <div class="container">
+    <div class="row">
+      <div class="center_div">
+        <h1 class='text-center login-title'>
+           Sign in
+        </h1>
+          @form(routes.UserManagement.login) {
+            @inputText(
+              loginForm("email"),
+              '_label -> "E-mail",
+              '_help  -> "",
+              'class -> "form-control",
+              '_class -> "form-group",
+              '_error -> loginForm.globalError
+            )
+            <input type="submit" value="Login">
+          }
+      </div>
+    </div>
+  </div>
+}

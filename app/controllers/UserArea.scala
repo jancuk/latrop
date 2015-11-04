@@ -5,9 +5,9 @@ import play.api.mvc._
 
 class UserArea extends Controller {
 
-  def home(email: String) = Action { implicit request =>
-    request.session.get("PLAY_SESSION").map { sessionVal =>
-      Ok(views.html.userarea(email))
+  def home = Action { request =>
+    request.session.get("USER_EMAIL").map { sessionVal =>
+      Ok(views.html.userarea(sessionVal))
     }.getOrElse {
       Unauthorized("Not connected")
     }

@@ -2,12 +2,14 @@
 
 @import helper._
 
-<title>@email user area</title>
+@main("Bte") {
+  <div class="container">
+    <div class="row">
+      <div class="center_div">
+        <h3> Welcome @email </h3>
+        <a href="@routes.UserManagement.logout">Logout</a>
+      </div>
+    </div>
+  </div>
+}
 
-  <h1> HEYA @email </h1>
-
-  <a href="@routes.UserManagement.logout">Logout</a>
-  
-  @form(routes.UserManagement.unregister(email)) {
-    <input type="submit" value="Unregister">
-  }

@@ -21,6 +21,10 @@ object User {
     ).executeUpdate()
   }
 
+  def findAll() = DB.withConnection { implicit conn =>
+    SQL("select * from user").list.size
+  }
+
   def exists(user: User) = DB.withConnection { implicit conn =>
     SQL("select * from user where email = {email}").
     on(

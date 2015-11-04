@@ -10,15 +10,9 @@ GET     /login                      controllers.UserManagement.loginView
 POST    /login                      controllers.UserManagement.login
 GET     /logout                     controllers.UserManagement.logout
 
-# Registration page
-GET     /register                   controllers.UserManagement.registerView
-POST    /register                   controllers.UserManagement.register
-
-# Unregistration
-POST    /unregister/:email          controllers.UserManagement.unregister(email: String)
-
 # User area
-GET     /user/:email                controllers.UserArea.home(email: String)
+# GET     /user/:email                controllers.UserArea.home(email: String)
+GET     /home                       controllers.UserArea.home
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
