@@ -1,0 +1,13 @@
+@(email: String)
+
+@import helper._
+
+<title>@email user area</title>
+
+  <h1> HEYA @email </h1>
+
+  <a href="@routes.UserManagement.logout">Logout</a>
+  
+  @form(routes.UserManagement.unregister(email)) {
+    <input type="submit" value="Unregister">
+  }

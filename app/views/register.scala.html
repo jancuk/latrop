@@ -1,0 +1,32 @@
+@(userRegisterForm: Form[User])(implicit messages: Messages)
+
+@import helper._
+
+<title>pf-login application</title>
+
+  <h1>Registration page</h1>
+
+  @form(routes.UserManagement.register) {
+
+    @inputText(
+      userRegisterForm("email"),
+      '_label -> "E-mail",
+      '_help  -> "Valid email address",
+      '_error -> userRegisterForm.globalError
+    )
+
+    @inputPassword(
+      userRegisterForm("pwd.main"),
+      '_label -> "Password",
+      '_help  -> "Password must be at least 10 characters"
+    )
+
+    @inputPassword(
+      userRegisterForm("pwd.confirm"),
+      '_label -> "Confirm password",
+      '_help  -> "Please confirm password",
+      '_error -> userRegisterForm.error("pwd")
+    )
+    
+    <input type="submit" value="Register">
+  }  

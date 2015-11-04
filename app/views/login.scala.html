@@ -1,0 +1,26 @@
+@(loginForm: Form[User])(implicit messages: Messages)
+
+@import helper._
+
+<title>pf-login application</title>
+
+  <h1>Login page</h1>
+
+  @form(routes.UserManagement.login) {
+
+    @inputText(
+      loginForm("email"),
+      '_label -> "E-mail",
+      '_help  -> "",
+      '_error -> loginForm.globalError
+    )
+
+    @inputPassword(
+      loginForm("pwd"),
+      '_label -> "Password"
+    )
+    
+    <input type="submit" value="Login">
+  }
+  
+  <a href="@routes.UserManagement.registerView">Register</a>
