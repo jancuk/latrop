@@ -2,7 +2,7 @@
 
 @import helper._
 
-<title>pf-login application</title>
+<title>login application</title>
 
   <h1>Registration page</h1>
 
@@ -15,18 +15,5 @@
       '_error -> userRegisterForm.globalError
     )
 
-    @inputPassword(
-      userRegisterForm("pwd.main"),
-      '_label -> "Password",
-      '_help  -> "Password must be at least 10 characters"
-    )
-
-    @inputPassword(
-      userRegisterForm("pwd.confirm"),
-      '_label -> "Confirm password",
-      '_help  -> "Please confirm password",
-      '_error -> userRegisterForm.error("pwd")
-    )
-    
     <input type="submit" value="Register">
   }  

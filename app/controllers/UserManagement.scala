@@ -1,20 +1,16 @@
 package controllers
 
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.concurrent.Future
-
 import play.api._
 import play.api.mvc._
 import play.api.i18n._
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.data.validation.Constraints._
-import play.api.libs.json.Json
 import play.api.Play.current
 import play.api.i18n.Messages.Implicits._
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import scala.concurrent.Future
 import models._
-import javax.inject.Inject
-import play.api.i18n.{I18nSupport, MessagesApi, Messages, Lang}
 
 class UserManagement extends Controller {
 
@@ -68,32 +64,21 @@ class UserManagement extends Controller {
   
   val userRegisterForm = Form(
     mapping(
-      "email" -> email,
-      "pwd" -> tuple(
-        "main" -> nonEmptyText(minLength = 10),
-        "confirm" -> nonEmptyText
-      ).verifying(
-        "Passwords don't match", 
-        pwd => pwd._1 == pwd._2
-      )
-    )(
-      (email, pwd) => User(email, pwd._1)
-    )(
-      user => Some(user.email, (user.pwd, ""))
-    ).verifying(
+      "email" -> nonEmptyText
+    )(User.apply)(User.unapply).verifying(
       "E-mail is already registered", 
       !User.exists(_)
     )
   )
-  
+
   val loginForm = Form(
-    (mapping(
-      "email" -> email, 
-      "pwd" -> text
-    )(User.apply)(User.unapply)).verifying(
-      "Invalid email or password", 
+    mapping(
+      "email" -> email
+    )(User.apply)(User.unapply).verifying(
+      "Invalid email", 
       User.auth(_)
     )
   )
-  
+
 }
+
