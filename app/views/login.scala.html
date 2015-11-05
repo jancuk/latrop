@@ -9,12 +9,12 @@
         <h1 class='text-center login-title'>
            Sign in
         </h1>
-          @form(routes.UserManagement.login) {
+          @form(routes.UserArea.login) {
             @inputText(
-              loginForm("email"),
+              loginForm("email"), 
+              'class -> "form-control",
               '_label -> "E-mail",
               '_help  -> "",
-              'class -> "form-control",
               '_class -> "form-group",
               '_error -> loginForm.globalError
             )

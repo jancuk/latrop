@@ -6,12 +6,11 @@
 GET     /                           controllers.Application.index
 
 # Login page
-GET     /login                      controllers.UserManagement.loginView
-POST    /login                      controllers.UserManagement.login
-GET     /logout                     controllers.UserManagement.logout
+GET     /login                      controllers.UserArea.loginView
+POST    /login                      controllers.UserArea.login
+GET     /logout                     controllers.UserArea.logout
 
 # User area
-# GET     /user/:email                controllers.UserArea.home(email: String)
 GET     /home                       controllers.UserArea.home
 
 # Map static resources from the /public folder to the /assets URL path
